@@ -1,0 +1,50 @@
+'use strict';
+ 
+const functions = require('firebase-functions');
+const {WebhookClient} = require('dialogflow-fulfillment');
+const {Card, Suggestion} = require('dialogflow-fulfillment');
+ 
+process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
+ 
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
+  const agent = new WebhookClient({ request, response });
+  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
+  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+ 
+  function welcome(agent) {
+    agent.add(`Welcome to my agent!`);
+  }
+ 
+  function fallback(agent) {
+    agent.add(`ฉันไม่สามารถเข้าใจคำถาม ลองปรับเปลี่ยนรูปแบบคำถามเล็กน้อยแล้วลองใหม่อีกครั้งครับ`);
+  }
+  
+  function bodyMassIndex(agent) {
+    let weight = agent.parameters.weight;
+    let height = agent.parameters.height / 100;
+    let bmi = (weight / (height * height)).toFixed(2);
+    let result = 'ขออภัย หนูไม่เข้าใจ';
+    
+    if (bmi < 18.5){
+      result = 'BMI ของคุณคือ' + bmi + 'ต่ำกว่าเกณฑ์  น้อยกว่า 18.5 ทานข้าวเยอะๆ รักษาสุขภาพนะครับ';
+    } else if (bmi >= 18.5 && bmi<= 22.9){
+      result = 'หุ่นดีจังงับอุนเทอ BMI ของคุณคือ ' + bmi + ' อยู่ระหว่าง 18.5 และ 22.9 รักษาสุขภาพต่อไปนะครับ:)';
+    } else if (bmi >= 23 && bmi<= 24.9){
+      result = 'ฺBMI ของคุณคือ ' + bmi + ' คุณเริ่มจะท้วมแล้วนะ';
+    } else if (bmi >= 25.8& bmi<= 29.9){
+      result = 'BMI ของคุณคือ ' + bmi + ' เกินเกณฑ์ ออกกำลังกายหน่อยนะ';
+    } else if (bmi > 30){
+      result = 'BMI ของคุณคือ ' + bmi + ' มากกว่า 30 ปรึกษาแพทย์นะครับ';
+    }
+    agent.add( result);
+  }
+
+
+  let intentMap = new Map();
+  intentMap.set('Default Welcome Intent', welcome);
+  intentMap.set('Default Fallback Intent', fallback);
+  
+  intentMap.set('BMI - custom - yes', bodyMassIndex);
+
+  agent.handleRequest(intentMap);
+});

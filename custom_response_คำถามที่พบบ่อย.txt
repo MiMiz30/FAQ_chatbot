@@ -1,0 +1,73 @@
+{
+  "line": {
+    "type": "text",
+    "text": "คำถามที่พบบ่อย",
+    "quickReply": {
+      "items": [
+        {
+          "action": {
+            "text": "ยืมหนังสือยังไง",
+            "type": "message",
+            "label": "ยืมหนังสือยังไง"
+          },
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+          "type": "action"
+        },
+        {
+          "type": "action",
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+          "action": {
+            "label": "ห้องสมุดเปิดวันไหนบ้าง",
+            "type": "message",
+            "text": "ห้องสมุดเปิดวันไหนบ้าง"
+          }
+        },
+        {
+          "type": "action",
+          "action": {
+            "type": "message",
+            "text": "music space เปิดกี่โมง",
+            "label": "music space เปิดกี่โมง"
+          },
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png"
+        },
+        {
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+          "type": "action",
+          "action": {
+            "text": "เข้า KKUMail ไม่ได้",
+            "type": "message",
+            "label": "เข้า KKUMail ไม่ได้"
+          }
+        },
+        {
+          "action": {
+            "type": "message",
+            "text": "ทำบัตรนักศึกษาหาย",
+            "label": "ทำบัตรนักศึกษาหาย"
+          },
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+          "type": "action"
+        },
+        {
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+          "type": "action",
+          "action": {
+            "label": "Renew หนังสือได้กี่ครัง",
+            "type": "message",
+            "text": "Renew หนังสือได้กี่ครัง"
+          }
+        },
+        {
+          "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+          "type": "action",
+          "action": {
+            "text": "ตรวจสอบค่าปรับ",
+            "label": "ตรวจสอบค่าปรับ",
+            "type": "message"
+          }
+        }
+      ]
+    }
+  }
+}
